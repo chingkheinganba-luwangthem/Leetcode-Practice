@@ -1,0 +1,24 @@
+class Solution {
+    public boolean judgeSquareSum(int c) {
+        // Initialize two pointers: one starting from 0 and the other from the square root of c
+        long left = 0;
+        long right = (long) Math.sqrt(c);
+
+        // Continue the loop while left pointer is less than or equal to the right pointer
+        while (left <= right) {
+            // Calculate the sum of squares of the two pointers
+            long sum = left * left + right * right;
+
+            // Check if the sum is equal to c
+            if (sum == c)
+                return true; // If so, return true as we've found the pair
+            else if (sum < c)
+                left++; // If the sum is less than c, move the left pointer to the right to increase the sum
+            else
+                right--; // If the sum is greater than c, move the right pointer to the left to decrease the sum
+        }
+
+        // If no pair (left, right) satisfies the condition, return false
+        return false;
+    }
+}
